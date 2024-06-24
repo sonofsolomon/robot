@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login and Signup</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div id="message"></div>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Login')">Login</button>
+  <button class="tablinks" onclick="openTab(event, 'Signup')">Signup</button>
+</div>
+
+<div id="Login" class="tabcontent">
+  <h3>Login</h3>
+  <form id="loginForm">
+    <label for="loginEmail">Email:</label><br>
+    <input type="text" id="loginEmail" name="loginEmail"><br>
+    <label for="loginPassword">Password:</label><br>
+    <input type="password" id="loginPassword" name="loginPassword"><br>
+    <label for="robotCheck">Type "I am not a robot":</label><br>
+    <input type="text" id="robotCheck" name="robotCheck"><br><br>
+    <input type="submit" value="Submit">
+  </form> 
+</div>
+
+<div id="Signup" class="tabcontent">
+  <h3>Signup</h3>
+  <form id="signupForm">
+    <label for="fullName">Full Name:</label><br>
+    <input type="text" id="fullName" name="fullName"><br>
+    <label for="signupEmail">Email:</label><br>
+    <input type="text" id="signupEmail" name="signupEmail"><br>
+    <label for="signupPassword">Password:</label><br>
+    <input type="password" id="signupPassword" name="signupPassword"><br>
+    <label for="confirmPassword">Confirm Password:</label><br>
+    <input type="password" id="confirmPassword" name="confirmPassword"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
