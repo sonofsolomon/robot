@@ -1,0 +1,148 @@
+<!DOCTYPE html><html><head>
+    <title>Login and Signup</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <style>
+        .recaptcha-container, .styled-input {
+            border: 1px solid #262626;
+            border-radius: 3px;
+            background-color: #f5f5f5;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: fit-content;
+        }
+        .recaptcha-checkbox {
+            display: inline-block;
+            margin-right: 0px;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border: 1px solid #848484;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .recaptcha-checkbox.checked::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 6px;
+            width: 5px;
+            height: 10px;
+            border: solid #4cae4c;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .recaptcha-label {
+            font-family: 'Arial', sans-serif;
+            cursor: pointer;
+        }
+        /* Styled input field */
+        .styled-input input {
+          
+            border: 1px solid #a7a4a4;
+            margin: 0;
+            padding: 0;
+            
+            /* background-color: transparent; */
+            width: auto;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+        }
+        .styled-input {
+            margin-bottom: 10px;
+        }
+        .styled-input {
+            border: 1px solid #525252;
+            border-radius: 3px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            width: 100%; /* Make the input field container fill the form width */
+            box-sizing: border-box; /* Makes sure padding doesn't affect the final width */
+            margin-bottom: 10px; /* Spacing between elements */
+        }
+
+        .styled-input input {
+            flex-grow: 1; /* Allows input to fill the space within the .styled-input */
+            border: 1px solid #d3d3d3; /* Removes individual input field border */
+            outline: none; /* Removes the outline to match the checkbox style */
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            padding: 0 5px; /* Slight padding within the input */
+            background-color: #fffdfd; /* Matches the checkbox background color */
+            color: #333; /* Text color - adjust as needed */
+            margin-left: 10px; /* Spacing between label and input field */
+        }
+
+        .styled-input input::placeholder {
+            color: #bfbfbf; /* Placeholder text color - adjust as needed */
+        }
+
+        .styled-input input:focus {
+            background-color: #e8e8e8; /* Background color when input is focused - adjust as needed */
+        }
+
+        .recaptcha-container {
+            /* Other styles ... */
+            margin-top: 10px; /* Ensures spacing above the checkbox container */
+        }
+    </style>
+</head>
+<body>
+  <div id="message"></div>
+
+<div class="tab">
+  <button class="tablinks active" onclick="openTab(event, 'Login')">Login</button>
+  <button class="tablinks" onclick="openTab(event, 'Signup')">Signup</button>
+</div>
+
+<div id="Login" class="tabcontent" style="display: block;">
+  <!-- <h3>Login</h3> -->
+  <form id="loginForm">
+    <!-- <label for="loginEmail">Email:</label><br> -->
+    <input type="text" id="loginEmail" name="loginEmail" placeholder="Email" style=""><br>
+    <!-- <label for="loginPassword">Password:</label><br> -->
+    <input type="password" id="loginPassword" name="loginPassword" placeholder="Password" style="">
+    <!-- Styled input field for "I am not a robot" -->
+    <br><hr>
+    <div class="styled-input">
+        <label for="robotCheck">Type:</label><br>
+        <input type="text" id="robotCheck" name="robotCheck" placeholder="I am not a robot" style="">
+    </div>
+    
+    <!-- Custom "I am not a robot" checkbox -->
+    <div class="recaptcha-container" id="testing">
+        <div class="recaptcha-checkbox" onclick="toggleCheckbox(this)" role="checkbox" aria-checked="false" tabindex="0"></div>
+        <label class="recaptcha-label" onclick="toggleCheckbox(document.querySelector('.recaptcha-checkbox'))">&nbsp; I am not a robot</label>
+    </div>
+    
+    <input type="submit" value="Submit" style="">
+  </form> 
+</div>
+
+<div id="Signup" class="tabcontent" style="display: none;">
+  <h3>Signup</h3>
+  <form id="signupForm">
+    <label for="fullName">Full Name:</label><br>
+    <input type="text" id="fullName" name="fullName" style=""><br>
+    <label for="signupEmail">Email:</label><br>
+    <input type="text" id="signupEmail" name="signupEmail" style=""><br>
+    <label for="signupPassword">Password:</label><br>
+    <input type="password" id="signupPassword" name="signupPassword" style=""><br>
+    <label for="confirmPassword">Confirm Password:</label><br>
+    <input type="password" id="confirmPassword" name="confirmPassword" style=""><br><br>
+    <input type="submit" value="Submit" style="">
+  </form>
+</div>
+
+<script src="/static/js/script.js"></script>
+<script>
+    function toggleCheckbox(element) {
+        const isChecked = element.getAttribute('aria-checked') === 'true';
+        element.setAttribute('aria-checked', !isChecked);
+        element.classList.toggle('checked', !isChecked);
+    }
+</script>
+
+</body></html>
